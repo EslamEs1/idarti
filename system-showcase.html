@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شرح النظام - إدارتي كلينك</title>
+    <!-- Bootstrap 5 RTL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- GLightbox for Image Gallery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .showcase-hero {
+            background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
+            padding: 120px 0 80px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .showcase-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,117.3C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+        .showcase-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .showcase-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .feature-showcase {
+            padding: 80px 0;
+        }
+        
+        .feature-showcase:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .screenshot-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .screenshot-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+        }
+        
+        .screenshot-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.4s ease;
+        }
+        
+        .screenshot-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        .screenshot-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30,136,229,0.9) 0%, rgba(13,71,161,0.9) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .screenshot-container:hover .screenshot-overlay {
+            opacity: 1;
+        }
+        
+        .screenshot-overlay i {
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .feature-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1e88e5, #0d47a1);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(30,136,229,0.3);
+        }
+        
+        .feature-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e88e5;
+            margin-bottom: 20px;
+        }
+        
+        .feature-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1rem;
+        }
+        
+        .feature-list li i {
+            color: #4caf50;
+            font-size: 1.2rem;
+        }
+        
+        .video-showcase {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+        }
+        
+        .video-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            background: #000;
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .video-placeholder {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-placeholder-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+        
+        .video-placeholder-content i {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .video-placeholder-content i:hover {
+            transform: scale(1.2);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item-caption {
+            padding: 20px;
+            background: white;
+            text-align: center;
+        }
+        
+        .gallery-item-caption h5 {
+            font-weight: 600;
+            color: #1e88e5;
+            margin: 0;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .showcase-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .showcase-hero p {
+                font-size: 1rem;
+            }
+            
+            .feature-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="إدارتي" style="height: 50px;" loading="eager">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="system-showcase.html">شرح النظام</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#pricing">الأسعار</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">تواصل معنا</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="showcase-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-10 mx-auto text-center" data-aos="fade-up">
+                    <h1>تعرف على إدارتي كلينك عن قرب</h1>
+                    <p>جولة شاملة في واجهات النظام ومميزاته المتقدمة</p>
+                    
+                    <!-- Notice Banner -->
+                    <div class="alert alert-light border-2 border-white text-start mt-4 mb-4" role="alert" style="background: rgba(255,255,255,0.95); box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <div class="d-flex align-items-start gap-3">
+                            <div style="font-size: 2.5rem; color: #1e88e5;">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div>
+                                <h5 class="alert-heading mb-2" style="color: #1e88e5;">هذه نبذة مبسّطة عن النظام</h5>
+                                <p class="mb-2" style="color: #263238; line-height: 1.8;">
+                                    النظام يحتوي على <strong>العشرات من المميزات والخيارات المتقدمة</strong> التي لم نعرضها هنا. 
+                                    ستتعرف على كل تفاصيل النظام من خلال:
+                                </p>
+                                <ul class="mb-0" style="color: #263238;">
+                                    <li><strong>فيديوهات تدريبية شاملة</strong> توضح كل جزء في النظام</li>
+                                    <li><strong>تدريب مباشر ومخصص</strong> من فريقنا المتخصص</li>
+                                    <li><strong>دليل استخدام تفصيلي</strong> لكل ميزة</li>
+                                    <li><strong>جلسات تعريفية مجانية</strong> لاكتشاف إمكانيات النظام</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#features" class="btn btn-light btn-lg">استكشف المميزات <i class="fas fa-arrow-down ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIDEO SECTION ===== -->
+    <section class="video-showcase">
+        <div class="container">
+            <div class="section-title text-center" data-aos="fade-up">
+                <h2>شاهد النظام في العمل</h2>
+                <p>فيديو توضيحي يشرح أهم مميزات النظام</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-10 mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <div class="video-placeholder-content">
+                                <i class="fas fa-play-circle"></i>
+                                <h3>شاهد الفيديو التوضيحي</h3>
+                                <p>مدة الفيديو: 3 دقائق</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ملاحظة حول الفيديوهات -->
+            <div class="row mt-5">
+                <div class="col-lg-10 mx-auto" data-aos="fade-up">
+                    <div class="video-info-box">
+                        <div class="row align-items-center">
+                            <div class="col-md-2 text-center mb-3 mb-md-0">
+                                <i class="fas fa-graduation-cap" style="font-size: 4rem; color: #1e88e5;"></i>
+                            </div>
+                            <div class="col-md-10">
+                                <h4 style="color: #1e88e5; font-weight: 700; margin-bottom: 15px;">مكتبة تدريبية شاملة في انتظارك</h4>
+                                <p style="color: #666; margin-bottom: 10px;">
+                                    بعد الاشتراك، ستحصل على وصول كامل لمكتبة فيديوهات تدريبية تغطي <strong>كل ميزة في النظام بالتفصيل</strong>. 
+                                    بالإضافة إلى جلسات تدريب مباشرة مع فريقنا لضمان استفادتك القصوى من النظام.
+                                </p>
+                                <div class="d-flex flex-wrap gap-2 align-items-center">
+                                    <span class="badge bg-primary" style="font-size: 0.9rem; padding: 8px 15px;">+20 فيديو تدريبي</span>
+                                    <span class="badge bg-success" style="font-size: 0.9rem; padding: 8px 15px;">تدريب مباشر مجاني</span>
+                                    <span class="badge bg-info" style="font-size: 0.9rem; padding: 8px 15px;">دعم فني مستمر</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 1: DASHBOARD ===== -->
+    <section id="features" class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="screenshot-container">
+                        <img src="img/manager-dashboard.png" alt="لوحة التحكم" loading="lazy">
+                        <div class="screenshot-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="feature-content">
+                        <div class="feature-number">01</div>
+                        <h3>لوحة التحكم الذكية</h3>
+                        <p>
+                            لوحة تحكم ذكية تعرض أهم الإحصائيات في لمحة واحدة، مع رسوم بيانية تفاعلية لمتابعة أداء العيادة بشكل لحظي.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> إحصائيات اليوم والشهر والسنة</li>
+                            <li><i class="fas fa-check-circle"></i> متابعة الإيرادات والمصروفات لحظياً</li>
+                            <li><i class="fas fa-check-circle"></i> عرض المواعيد والمهام المعلقة</li>
+                            <li><i class="fas fa-check-circle"></i> مؤشرات أداء الأطباء والخدمات</li>
+                            <li><i class="fas fa-check-circle"></i> تنبيهات ذكية لمخزون الصيدلية</li>
+                            <li><i class="fas fa-check-circle"></i> رسوم بيانية تفاعلية احترافية</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 2: APPOINTMENTS ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 order-lg-2" data-aos="fade-left">
+                    <div class="screenshot-container">
+                        <img src="img/قائمة الكشوفات.png" alt="إدارة المواعيد" loading="lazy">
+                        <div class="screenshot-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4 order-lg-1" data-aos="fade-right">
+                    <div class="feature-content">
+                        <div class="feature-number">02</div>
+                        <h3>نظام المواعيد والكشوفات</h3>
+                        <p>
+                            نظام مواعيد مرن يتيح إضافة، تعديل، تأكيد أو إلغاء المواعيد بسهولة، مع إشعارات تلقائية للمرضى والأطباء.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> إضافة وتعديل المواعيد بمرونة كاملة</li>
+                            <li><i class="fas fa-check-circle"></i> إشعارات تلقائية عبر البريد والواتساب</li>
+                            <li><i class="fas fa-check-circle"></i> جدولة الورديات للأطباء والعاملين</li>
+                            <li><i class="fas fa-check-circle"></i> متابعة الحالات المزمنة وجدولة المراجعات</li>
+                            <li><i class="fas fa-check-circle"></i> تقويم شهري/أسبوعي/يومي تفاعلي</li>
+                            <li><i class="fas fa-check-circle"></i> إدارة قوائم الانتظار بذكاء</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 3: MEDICAL RECORDS ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="screenshot-container">
+                        <img src="img/تفاصيل المريض.png" alt="السجلات الطبية" loading="lazy">
+                        <div class="screenshot-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="feature-content">
+                        <div class="feature-number">03</div>
+                        <h3>السجلات الطبية والروشتات</h3>
+                        <p>
+                            إدارة شاملة للمرضى والملفات الطبية والسجلات السابقة، مع كتابة الروشتات الإلكترونية وحفظها تلقائياً.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> ملف طبي شامل لكل مريض</li>
+                            <li><i class="fas fa-check-circle"></i> التاريخ المرضي والسجلات السابقة</li>
+                            <li><i class="fas fa-check-circle"></i> كتابة الروشتات إلكترونياً</li>
+                            <li><i class="fas fa-check-circle"></i> ربط مباشر بين الطبيب والصيدلية</li>
+                            <li><i class="fas fa-check-circle"></i> طلب التحاليل وتسجيل النتائج</li>
+                            <li><i class="fas fa-check-circle"></i> إرفاق الأشعة والتقارير الطبية</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 4: INVOICING ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 order-lg-2" data-aos="fade-left">
+                    <div class="screenshot-container">
+                        <img src="img/قائمة الفاوتير.png" alt="الفواتير والمدفوعات" loading="lazy">
+                        <div class="screenshot-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4 order-lg-1" data-aos="fade-right">
+                    <div class="feature-content">
+                        <div class="feature-number">04</div>
+                        <h3>نظام الفواتير والمحاسبة</h3>
+                        <p>
+                            نظام فواتير ومدفوعات احترافي مع دعم الضرائب والخصومات، وتتبع دقيق للإيرادات والمصروفات.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> إصدار فواتير احترافية مع الضرائب</li>
+                            <li><i class="fas fa-check-circle"></i> دعم جميع طرق الدفع (كاش - فوري - فيزا - محافظ)</li>
+                            <li><i class="fas fa-check-circle"></i> تتبع الإيرادات والمصروفات التفصيلية</li>
+                            <li><i class="fas fa-check-circle"></i> نظام الرواتب والمصروفات التشغيلية</li>
+                            <li><i class="fas fa-check-circle"></i> طباعة أو إرسال الفواتير إلكترونياً</li>
+                            <li><i class="fas fa-check-circle"></i> تقارير مالية شاملة بصيغ PDF/Excel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 5: REPORTS ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="screenshot-container">
+                        <img src="img/التقارير (1).png" alt="التقارير والإحصائيات" loading="lazy">
+                        <div class="screenshot-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="feature-content">
+                        <div class="feature-number">05</div>
+                        <h3>التقارير والإحصائيات المتقدمة</h3>
+                        <p>
+                            لوحة تقارير تفاعلية لعرض الأداء والإحصاءات، مع إمكانية إنشاء وتحميل التقارير بصيغ متعددة.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> تقارير مالية تفصيلية (إيرادات - مصروفات)</li>
+                            <li><i class="fas fa-check-circle"></i> تقارير أداء الأطباء والخدمات</li>
+                            <li><i class="fas fa-check-circle"></i> تقارير التحاليل والأدوية والمخزون</li>
+                            <li><i class="fas fa-check-circle"></i> تصدير بصيغة PDF وExcel بضغطة واحدة</li>
+                            <li><i class="fas fa-check-circle"></i> رسوم بيانية تفاعلية احترافية</li>
+                            <li><i class="fas fa-check-circle"></i> تقارير مخصصة حسب الفترة والفئة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 6: DOCTORS MANAGEMENT ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 order-lg-2" data-aos="fade-left">
+                    <div class="screenshot-container">
+                        <img src="img/قائمة الداكتره.png" alt="إدارة الأطباء" loading="lazy">
+                        <div class="screenshot-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4 order-lg-1" data-aos="fade-right">
+                    <div class="feature-content">
+                        <div class="feature-number">06</div>
+                        <h3>إدارة الأطباء والمستخدمين</h3>
+                        <p>
+                            إدارة كاملة للأطباء والمساعدين وجدولة الورديات، مع نظام صلاحيات دقيق لكل دور (طبيب - ممرض - كاشير - مدير).
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> إضافة وإدارة الأطباء والعاملين</li>
+                            <li><i class="fas fa-check-circle"></i> جدولة الورديات والأوقات بسهولة</li>
+                            <li><i class="fas fa-check-circle"></i> صلاحيات دقيقة لكل مستخدم</li>
+                            <li><i class="fas fa-check-circle"></i> تتبع أداء الأطباء والمبيعات</li>
+                            <li><i class="fas fa-check-circle"></i> إدارة التخصصات وأسعار الخدمات</li>
+                            <li><i class="fas fa-check-circle"></i> حماية متقدمة للبيانات بتقنية SSL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 7: PHARMACY SYSTEM ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="screenshot-container">
+                        <img src="img/داش بورد الصيدليه.png" alt="نظام الصيدلية" loading="lazy">
+                        <div class="screenshot-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="feature-content">
+                        <div class="feature-number">07</div>
+                        <h3>نظام الصيدلية والمخزون</h3>
+                        <p>
+                            إدارة كاملة للمخزون والأدوية مع تنبيه عند انخفاض الكميات أو قرب انتهاء الصلاحية، مع دعم Batch Tracking.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> إدارة كاملة للأدوية والمخزون</li>
+                            <li><i class="fas fa-check-circle"></i> تتبع الدفعات (Batch Tracking) لكل صنف</li>
+                            <li><i class="fas fa-check-circle"></i> تنبيهات تلقائية للكميات المنخفضة</li>
+                            <li><i class="fas fa-check-circle"></i> تنبيه عند قرب انتهاء الصلاحية</li>
+                            <li><i class="fas fa-check-circle"></i> إدارة الموردين والفواتير الشرائية</li>
+                            <li><i class="fas fa-check-circle"></i> ربط مباشر مع الروشتات الطبية</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ALL FEATURES LIST ===== -->
+    <section class="section-padding" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);">
+        <div class="container">
+            <div class="section-title text-center" data-aos="fade-up">
+                <h2>جميع مميزات <span class="text-primary">النظام</span></h2>
+                <p>قائمة شاملة بجميع الإمكانيات والمميزات المتاحة في إدارتي كلينك</p>
+            </div>
+            
+            <div class="row">
+                <!-- إدارة المرضى والملفات -->
+                <div class="col-lg-6 mb-4" data-aos="fade-up">
+                    <div class="features-category-box">
+                        <div class="category-header">
+                            <i class="fas fa-user-injured"></i>
+                            <h4>إدارة المرضى والملفات الطبية</h4>
+                        </div>
+                        <ul class="compact-feature-list">
+                            <li><i class="fas fa-angle-left text-primary"></i> إدارة شاملة للمرضى والملفات الطبية</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> السجلات الطبية السابقة</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> التاريخ المرضي الكامل</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> كتابة الروشتات الإلكترونية</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> طلب التحاليل وتسجيل النتائج</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> إرسال نتائج التحاليل للمريض</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- نظام المواعيد -->
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="features-category-box">
+                        <div class="category-header">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h4>نظام المواعيد والإشعارات</h4>
+                        </div>
+                        <ul class="compact-feature-list">
+                            <li><i class="fas fa-angle-left text-primary"></i> إضافة وتعديل وإلغاء المواعيد بسهولة</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> إشعارات تلقائية عبر البريد والواتساب</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> جدولة الورديات للأطباء</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> متابعة الحالات المزمنة تلقائياً</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> تقويم تفاعلي (شهري/أسبوعي/يومي)</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> إدارة قوائم الانتظار</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- الصيدلية والمخزون -->
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="features-category-box">
+                        <div class="category-header">
+                            <i class="fas fa-pills"></i>
+                            <h4>الصيدلية والمخزون</h4>
+                        </div>
+                        <ul class="compact-feature-list">
+                            <li><i class="fas fa-angle-left text-primary"></i> إدارة كاملة للأدوية والمخزون</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> تنبيه عند انخفاض الكميات</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> تنبيه قرب انتهاء الصلاحية</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> تتبع الدفعات (Batch Tracking)</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> إدارة الموردين والمشتريات</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> ربط مباشر مع الروشتات</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- النظام المالي -->
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="features-category-box">
+                        <div class="category-header">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <h4>النظام المالي والمحاسبي</h4>
+                        </div>
+                        <ul class="compact-feature-list">
+                            <li><i class="fas fa-angle-left text-primary"></i> فواتير احترافية مع الضرائب والخصومات</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> دعم جميع طرق الدفع (كاش - فيزا - محافظ)</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> تتبع الإيرادات والمصروفات</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> نظام الرواتب والمصروفات التشغيلية</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> تقارير مالية شاملة</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> طباعة وإرسال الفواتير إلكترونياً</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- التقارير -->
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="features-category-box">
+                        <div class="category-header">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>التقارير والإحصائيات</h4>
+                        </div>
+                        <ul class="compact-feature-list">
+                            <li><i class="fas fa-angle-left text-primary"></i> لوحة تقارير تفاعلية (Dashboard)</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> تحميل التقارير PDF/Excel بضغطة واحدة</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> تقارير الأداء العامة</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> تقارير أداء الأطباء والمبيعات</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> تقارير التحاليل والأدوية</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> تقارير مخصصة حسب الحاجة</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- الصلاحيات والأمان -->
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="features-category-box">
+                        <div class="category-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>الصلاحيات والأمان</h4>
+                        </div>
+                        <ul class="compact-feature-list">
+                            <li><i class="fas fa-angle-left text-primary"></i> إدارة المستخدمين والصلاحيات</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> صلاحيات دقيقة لكل دور</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> حماية متقدمة بتقنية SSL</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> نسخ احتياطي تلقائي دوري</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> نظام سحابي آمن 100%</li>
+                            <li><i class="fas fa-angle-left text-primary"></i> أداء عالي وسرعة تنفيذ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY SECTION ===== -->
+    <section class="section-padding" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title text-center" data-aos="fade-up">
+                <h2>معرض الصور</h2>
+                <p>شاهد المزيد من لقطات شاشة النظام</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <a href="img/manager-dashboard.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="img/manager-dashboard.png" alt="لوحة التحكم" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>لوحة التحكم الرئيسية</h5>
+                    </div>
+                </a>
+                
+                <a href="img/قائمة المرضى.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="150">
+                    <img src="img/قائمة المرضى.png" alt="قائمة المرضى" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>إدارة المرضى</h5>
+                    </div>
+                </a>
+                
+                <a href="img/قائمة الكشوفات.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="img/قائمة الكشوفات.png" alt="قائمة الكشوفات" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>نظام الكشوفات الطبية</h5>
+                    </div>
+                </a>
+                
+                <a href="img/قائمة الفاوتير.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="250">
+                    <img src="img/قائمة الفاوتير.png" alt="الفواتير" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>نظام الفواتير</h5>
+                    </div>
+                </a>
+                
+                <a href="img/التقارير (1).png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="img/التقارير (1).png" alt="التقارير" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>التقارير والإحصائيات</h5>
+                    </div>
+                </a>
+                
+                <a href="img/قائمة الداكتره.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="350">
+                    <img src="img/قائمة الداكتره.png" alt="إدارة الأطباء" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>إدارة الأطباء</h5>
+                    </div>
+                </a>
+                
+                <a href="img/قائمة الروشتات.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="img/قائمة الروشتات.png" alt="الوصفات الطبية" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>إدارة الوصفات الطبية</h5>
+                    </div>
+                </a>
+                
+                <a href="img/داش بورد الصيدليه.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="450">
+                    <img src="img/داش بورد الصيدليه.png" alt="الصيدلية" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>لوحة تحكم الصيدلية</h5>
+                    </div>
+                </a>
+                
+                <a href="img/الاعدادات.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="500">
+                    <img src="img/الاعدادات.png" alt="الإعدادات" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>إعدادات النظام</h5>
+                    </div>
+                </a>
+                
+                <a href="img/تفاصيل الفاتورة.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="550">
+                    <img src="img/تفاصيل الفاتورة.png" alt="تفاصيل الفاتورة" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>تفاصيل الفاتورة</h5>
+                    </div>
+                </a>
+                
+                <a href="img/قائمة التحاليل.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="600">
+                    <img src="img/قائمة التحاليل.png" alt="التحاليل الطبية" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>إدارة التحاليل الطبية</h5>
+                    </div>
+                </a>
+                
+                <a href="img/تفاصي الكشف.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="650">
+                    <img src="img/تفاصي الكشف.png" alt="تفاصيل الكشف" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>تفاصيل الكشف الطبي</h5>
+                    </div>
+                </a>
+                
+                <a href="img/الصلاحيات.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="700">
+                    <img src="img/الصلاحيات.png" alt="إدارة الصلاحيات" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>إدارة الصلاحيات</h5>
+                    </div>
+                </a>
+                
+                <a href="img/تفاصيل الروشته.png" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="750">
+                    <img src="img/تفاصيل الروشته.png" alt="تفاصيل الوصفة" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>تفاصيل الوصفة الطبية</h5>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- بانر معلومات إضافية -->
+            <div class="row mt-5">
+                <div class="col-lg-10 mx-auto" data-aos="fade-up">
+                    <div class="more-features-banner">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3 text-center mb-3 mb-lg-0">
+                                <div class="more-features-icon">
+                                    <i class="fas fa-rocket"></i>
+                                    <div class="features-count">+38</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <h3>هناك الكثير والكثير من المميزات!</h3>
+                                <p>
+                                    الصور أعلاه تعرض <strong>نبذة مبسطة فقط</strong> عن واجهات النظام الرئيسية. 
+                                    نظام إدارتي كلينك يحتوي على <strong>أكثر من 38 ميزة وخيار متقدم</strong> لإدارة عيادتك باحترافية كاملة.
+                                </p>
+                                <div class="more-features-list">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul>
+                                                <li><i class="fas fa-check-double text-success"></i> بوابة المريض (مواعيد - سجلات - دفع أونلاين)</li>
+                                                <li><i class="fas fa-check-double text-success"></i> نظام تعدد الفروع من حساب واحد</li>
+                                                <li><i class="fas fa-check-double text-success"></i> تطبيق موبايل للأطباء والإدارة</li>
+                                                <li><i class="fas fa-check-double text-success"></i> نسخ احتياطي تلقائي دوري</li>
+                                                <li><i class="fas fa-check-double text-success"></i> تصميم متجاوب 100% (جوال - تابلت - كمبيوتر)</li>
+                                                <li><i class="fas fa-check-double text-success"></i> دعم تعدد اللغات (عربي - إنجليزي)</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul>
+                                                <li><i class="fas fa-check-double text-success"></i> نظام سحابي - يعمل من أي مكان</li>
+                                                <li><i class="fas fa-check-double text-success"></i> إمكانية تحديد أسعار مختلفة لكل خدمة</li>
+                                                <li><i class="fas fa-check-double text-success"></i> إدارة الأكواد والأصناف من صفحة واحدة</li>
+                                                <li><i class="fas fa-check-double text-success"></i> تكامل مع الأجهزة الطبية مستقبلاً</li>
+                                                <li><i class="fas fa-check-double text-success"></i> أداء عالي وسرعة في التنفيذ</li>
+                                                <li><i class="fas fa-check-double text-success"></i> تحديثات مستمرة دون توقف العمل</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="index.html#contact" class="btn btn-primary btn-lg me-2">احجز جلسة تعريفية مجانية</a>
+                                    <a href="#" class="btn btn-outline-primary btn-lg">اطلب عرضاً توضيحياً كاملاً</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                    <h2>جاهز لتجربة النظام؟</h2>
+                    <p>احصل على نسخة تجريبية مجانية لمدة 14 يوماً + تدريب شامل من فريقنا</p>
+                    <a href="index.html#contact" class="btn btn-light btn-lg me-3">ابدأ الآن مجاناً</a>
+                    <a href="index.html#pricing" class="btn btn-outline-light btn-lg">عرض الأسعار</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget">
+                        <h4>عن إدارتي</h4>
+                        <p>أنظمة إدارة ذكية وموثوقة تساعدك على تطوير عملك وزيادة كفاءته.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget">
+                        <h4>روابط سريعة</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html">الرئيسية</a></li>
+                            <li><a href="system-showcase.html">شرح النظام</a></li>
+                            <li><a href="index.html#pricing">الأسعار</a></li>
+                            <li><a href="index.html#contact">تواصل معنا</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4>الدعم</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">الأسئلة الشائعة</a></li>
+                            <li><a href="#">الدعم الفني</a></li>
+                            <li><a href="#">سياسة الخصوصية</a></li>
+                            <li><a href="#">الشروط والأحكام</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4>اتصل بنا</h4>
+                        <ul class="footer-links">
+                            <li><i class="fas fa-map-marker-alt ml-2"></i> الرياض، المملكة العربية السعودية</li>
+                            <li><i class="fas fa-phone-alt ml-2"></i> +966 55 000 0000</li>
+                            <li><i class="fas fa-envelope ml-2"></i> info@idarti.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p> 2025 إدارتي. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/966550000000" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- GLightbox -->
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Initialize GLightbox for image gallery
+        const lightbox = GLightbox({
+            touchNavigation: true,
+            loop: true,
+            autoplayVideos: true
+        });
+    </script>
+</body>
+</html>
+

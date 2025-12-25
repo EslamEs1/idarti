@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارتي الأكاديمية - نظام إدارة المراكز التعليمية والأكاديميات</title>
+    <!-- Bootstrap 5 RTL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- GLightbox for Image Gallery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .system-hero {
+            background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
+            padding: 120px 0 80px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .system-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,117.3C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+        .system-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .system-hero .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            color: rgba(255,255,255,0.95);
+            position: relative;
+        }
+        
+        .hero-preview {
+            position: relative;
+            margin-top: 60px;
+            perspective: 1000px;
+        }
+        
+        .hero-preview img {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 5px solid rgba(255, 255, 255, 0.9);
+            transition: all 0.5s ease;
+        }
+        
+        .hero-preview:hover img {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+        }
+        
+        .feature-showcase {
+            padding: 80px 0;
+        }
+        
+        .feature-showcase:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .screenshot-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .screenshot-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+        }
+        
+        .screenshot-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.4s ease;
+        }
+        
+        .screenshot-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        .feature-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1e88e5, #0d47a1);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(30,136,229,0.3);
+        }
+        
+        .feature-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e88e5;
+            margin-bottom: 20px;
+        }
+        
+        .feature-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1rem;
+        }
+        
+        .feature-list li i {
+            color: #4caf50;
+            font-size: 1.2rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item-caption {
+            padding: 20px;
+            background: white;
+            text-align: center;
+        }
+        
+        .gallery-item-caption h5 {
+            font-weight: 600;
+            color: #1e88e5;
+            margin: 0;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .system-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .system-hero .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/main/logo.png" alt="إدارتي" style="height: 50px;" loading="eager">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="systemsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            الأنظمة
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="systemsDropdown">
+                            <li><a class="dropdown-item" href="idarti-clinic.html"><i class="fas fa-hospital me-2"></i> إدارتي العيادات</a></li>
+                            <li><a class="dropdown-item active" href="idarti-academy.html"><i class="fas fa-graduation-cap me-2"></i> إدارتي الأكاديمية</a></li>
+                            <li><a class="dropdown-item" href="idarti-track.html"><i class="fas fa-calculator me-2"></i> إدارتي المحاسبي</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html#products"><i class="fas fa-th me-2"></i> جميع الأنظمة</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="system-showcase.html">شرح النظام</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#pricing">الأسعار</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">تواصل معنا</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="system-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center" data-aos="fade-up">
+                    <h1>إدارتي الأكاديمية</h1>
+                    <p class="hero-subtitle">نظام شامل لإدارة المراكز التعليمية والأكاديميات بكفاءة واحترافية</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-10 mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    <div class="hero-preview text-center">
+                        <img src="img/idarti_academy/لوحة تحكم المدير.jpeg" alt="لوحة تحكم إدارتي الأكاديمية" loading="eager">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 1: ADMIN DASHBOARD ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="screenshot-container">
+                        <a href="img/idarti_academy/لوحة تحكم المدير.jpeg" class="glightbox">
+                            <img src="img/idarti_academy/لوحة تحكم المدير.jpeg" alt="لوحة تحكم المدير" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="feature-content">
+                        <div class="feature-number">01</div>
+                        <h3>لوحة تحكم المدير</h3>
+                        <p>
+                            لوحة تحكم شاملة للمدير تعرض جميع الإحصائيات والمؤشرات المهمة لإدارة الأكاديمية بكفاءة.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> إحصائيات الطلاب والمعلمين</li>
+                            <li><i class="fas fa-check-circle"></i> متابعة الحضور والغياب</li>
+                            <li><i class="fas fa-check-circle"></i> الإيرادات والمصروفات</li>
+                            <li><i class="fas fa-check-circle"></i> تقارير الأداء الشاملة</li>
+                            <li><i class="fas fa-check-circle"></i> إدارة الجدول الدراسي</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 2: FAMILY DASHBOARD ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 order-lg-2" data-aos="fade-left">
+                    <div class="screenshot-container">
+                        <a href="img/idarti_academy/لوحة تحكم العائلة.jpeg" class="glightbox">
+                            <img src="img/idarti_academy/لوحة تحكم العائلة.jpeg" alt="لوحة تحكم العائلة" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4 order-lg-1" data-aos="fade-right">
+                    <div class="feature-content">
+                        <div class="feature-number">02</div>
+                        <h3>لوحة تحكم العائلة</h3>
+                        <p>
+                            واجهة مخصصة للعائلات لمتابعة أبنائهم الطلاب والحصول على جميع المعلومات المهمة.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> متابعة الحضور والغياب</li>
+                            <li><i class="fas fa-check-circle"></i> الاطلاع على الدرجات والتقييمات</li>
+                            <li><i class="fas fa-check-circle"></i> جدول الحصص والمواعيد</li>
+                            <li><i class="fas fa-check-circle"></i> الفواتير والمدفوعات</li>
+                            <li><i class="fas fa-check-circle"></i> التواصل مع المعلمين</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 3: CLASSES MANAGEMENT ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="screenshot-container">
+                        <a href="img/idarti_academy/ادارة الحص.jpeg" class="glightbox">
+                            <img src="img/idarti_academy/ادارة الحص.jpeg" alt="إدارة الحصص" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="feature-content">
+                        <div class="feature-number">03</div>
+                        <h3>إدارة الحصص والجدول الدراسي</h3>
+                        <p>
+                            نظام متكامل لإدارة الحصص والجدول الدراسي مع إمكانية تخصيص الأوقات والمعلمين.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> جدولة الحصص بسهولة</li>
+                            <li><i class="fas fa-check-circle"></i> تخصيص المعلمين للحصص</li>
+                            <li><i class="fas fa-check-circle"></i> إدارة القاعات والفصول</li>
+                            <li><i class="fas fa-check-circle"></i> متابعة الحضور في كل حصة</li>
+                            <li><i class="fas fa-check-circle"></i> تقارير الحصص الشاملة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 4: CLASS DETAILS ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 order-lg-2" data-aos="fade-left">
+                    <div class="screenshot-container">
+                        <a href="img/idarti_academy/تفاصيل الحصة.jpeg" class="glightbox">
+                            <img src="img/idarti_academy/تفاصيل الحصة.jpeg" alt="تفاصيل الحصة" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4 order-lg-1" data-aos="fade-right">
+                    <div class="feature-content">
+                        <div class="feature-number">04</div>
+                        <h3>تفاصيل الحصة</h3>
+                        <p>
+                            عرض تفصيلي لكل حصة مع معلومات الطلاب الحاضرين والغياب والملاحظات.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> معلومات الحصة الكاملة</li>
+                            <li><i class="fas fa-check-circle"></i> قائمة الحضور والغياب</li>
+                            <li><i class="fas fa-check-circle"></i> تسجيل الملاحظات</li>
+                            <li><i class="fas fa-check-circle"></i> ربط بالطلاب والمعلمين</li>
+                            <li><i class="fas fa-check-circle"></i> سجل الحضور التفصيلي</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 5: STUDENT DETAILS ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="screenshot-container">
+                        <a href="img/idarti_academy/تفاصيل الطالب.jpeg" class="glightbox">
+                            <img src="img/idarti_academy/تفاصيل الطالب.jpeg" alt="تفاصيل الطالب" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="feature-content">
+                        <div class="feature-number">05</div>
+                        <h3>تفاصيل الطالب</h3>
+                        <p>
+                            ملف شامل لكل طالب يتضمن جميع المعلومات الأكاديمية والشخصية والتاريخ الدراسي.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> المعلومات الشخصية الكاملة</li>
+                            <li><i class="fas fa-check-circle"></i> السجل الأكاديمي</li>
+                            <li><i class="fas fa-check-circle"></i> الحضور والغياب</li>
+                            <li><i class="fas fa-check-circle"></i> الفواتير والمدفوعات</li>
+                            <li><i class="fas fa-check-circle"></i> التواصل مع العائلة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 6: TEACHER PROFILE ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 order-lg-2" data-aos="fade-left">
+                    <div class="screenshot-container">
+                        <a href="img/idarti_academy/الملف الشخصى للمعلم.jpeg" class="glightbox">
+                            <img src="img/idarti_academy/الملف الشخصى للمعلم.jpeg" alt="الملف الشخصي للمعلم" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4 order-lg-1" data-aos="fade-right">
+                    <div class="feature-content">
+                        <div class="feature-number">06</div>
+                        <h3>الملف الشخصي للمعلم</h3>
+                        <p>
+                            ملف شامل لكل معلم يتضمن معلوماته الشخصية والحصص المخصصة له والتقييمات.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> المعلومات الشخصية</li>
+                            <li><i class="fas fa-check-circle"></i> الحصص المخصصة</li>
+                            <li><i class="fas fa-check-circle"></i> الرواتب والمستحقات</li>
+                            <li><i class="fas fa-check-circle"></i> التقييمات والأداء</li>
+                            <li><i class="fas fa-check-circle"></i> الصلاحيات والصلاحيات</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 7: FAMILIES MANAGEMENT ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="screenshot-container">
+                        <a href="img/idarti_academy/ادارة العائلات.jpeg" class="glightbox">
+                            <img src="img/idarti_academy/ادارة العائلات.jpeg" alt="إدارة العائلات" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="feature-content">
+                        <div class="feature-number">07</div>
+                        <h3>إدارة العائلات</h3>
+                        <p>
+                            نظام متكامل لإدارة بيانات العائلات والطلاب المرتبطين بها مع إمكانية التواصل المباشر.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> إضافة وإدارة العائلات</li>
+                            <li><i class="fas fa-check-circle"></i> ربط الطلاب بالعائلات</li>
+                            <li><i class="fas fa-check-circle"></i> التواصل مع العائلات</li>
+                            <li><i class="fas fa-check-circle"></i> متابعة الفواتير والمدفوعات</li>
+                            <li><i class="fas fa-check-circle"></i> الإشعارات والتحديثات</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURE 8: INVOICES MANAGEMENT ===== -->
+    <section class="feature-showcase">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 order-lg-2" data-aos="fade-left">
+                    <div class="screenshot-container">
+                        <a href="img/idarti_academy/ادارة الفواتير.jpeg" class="glightbox">
+                            <img src="img/idarti_academy/ادارة الفواتير.jpeg" alt="إدارة الفواتير" loading="lazy">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4 order-lg-1" data-aos="fade-right">
+                    <div class="feature-content">
+                        <div class="feature-number">08</div>
+                        <h3>إدارة الفواتير والمدفوعات</h3>
+                        <p>
+                            نظام فواتير شامل لإدارة رسوم الطلاب والمدفوعات مع تتبع دقيق للحسابات.
+                        </p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> إصدار فواتير احترافية</li>
+                            <li><i class="fas fa-check-circle"></i> تتبع المدفوعات والمتبقي</li>
+                            <li><i class="fas fa-check-circle"></i> تقارير مالية شاملة</li>
+                            <li><i class="fas fa-check-circle"></i> إشعارات الدفع التلقائية</li>
+                            <li><i class="fas fa-check-circle"></i> دعم طرق دفع متعددة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY SECTION ===== -->
+    <section id="gallery" class="section-padding" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title text-center" data-aos="fade-up">
+                <h2>معرض الصور</h2>
+                <p>شاهد المزيد من لقطات شاشة النظام</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <a href="img/idarti_academy/لوحة تحكم المدير.jpeg" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="img/idarti_academy/لوحة تحكم المدير.jpeg" alt="لوحة تحكم المدير" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>لوحة تحكم المدير</h5>
+                    </div>
+                </a>
+                
+                <a href="img/idarti_academy/لوحة تحكم العائلة.jpeg" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="150">
+                    <img src="img/idarti_academy/لوحة تحكم العائلة.jpeg" alt="لوحة تحكم العائلة" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>لوحة تحكم العائلة</h5>
+                    </div>
+                </a>
+                
+                <a href="img/idarti_academy/ادارة الحص.jpeg" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="img/idarti_academy/ادارة الحص.jpeg" alt="إدارة الحصص" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>إدارة الحصص</h5>
+                    </div>
+                </a>
+                
+                <a href="img/idarti_academy/تفاصيل الحصة.jpeg" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="250">
+                    <img src="img/idarti_academy/تفاصيل الحصة.jpeg" alt="تفاصيل الحصة" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>تفاصيل الحصة</h5>
+                    </div>
+                </a>
+                
+                <a href="img/idarti_academy/تفاصيل الطالب.jpeg" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="img/idarti_academy/تفاصيل الطالب.jpeg" alt="تفاصيل الطالب" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>تفاصيل الطالب</h5>
+                    </div>
+                </a>
+                
+                <a href="img/idarti_academy/الملف الشخصى للمعلم.jpeg" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="350">
+                    <img src="img/idarti_academy/الملف الشخصى للمعلم.jpeg" alt="الملف الشخصي للمعلم" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>الملف الشخصي للمعلم</h5>
+                    </div>
+                </a>
+                
+                <a href="img/idarti_academy/ادارة العائلات.jpeg" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="img/idarti_academy/ادارة العائلات.jpeg" alt="إدارة العائلات" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>إدارة العائلات</h5>
+                    </div>
+                </a>
+                
+                <a href="img/idarti_academy/ادارة الفواتير.jpeg" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="450">
+                    <img src="img/idarti_academy/ادارة الفواتير.jpeg" alt="إدارة الفواتير" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>إدارة الفواتير</h5>
+                    </div>
+                </a>
+                
+                <a href="img/idarti_academy/تفاصيل فاتورة العائلة.jpeg" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="500">
+                    <img src="img/idarti_academy/تفاصيل فاتورة العائلة.jpeg" alt="تفاصيل فاتورة العائلة" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>تفاصيل فاتورة العائلة</h5>
+                    </div>
+                </a>
+                
+                <a href="img/idarti_academy/تفاصيل فاتورةراتب المعلم.jpeg" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="550">
+                    <img src="img/idarti_academy/تفاصيل فاتورةراتب المعلم.jpeg" alt="تفاصيل فاتورة راتب المعلم" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>تفاصيل فاتورة راتب المعلم</h5>
+                    </div>
+                </a>
+                
+                <a href="img/idarti_academy/ادارة الصلاحيات.jpeg" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="600">
+                    <img src="img/idarti_academy/ادارة الصلاحيات.jpeg" alt="إدارة الصلاحيات" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>إدارة الصلاحيات</h5>
+                    </div>
+                </a>
+                
+                <a href="img/idarti_academy/صفحة الاشعارات.jpeg" class="gallery-item glightbox" data-aos="zoom-in" data-aos-delay="650">
+                    <img src="img/idarti_academy/صفحة الاشعارات.jpeg" alt="صفحة الإشعارات" loading="lazy">
+                    <div class="gallery-item-caption">
+                        <h5>صفحة الإشعارات</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                    <h2>جاهز لتجربة النظام؟</h2>
+                    <p>احصل على نسخة تجريبية مجانية لمدة 14 يوماً + تدريب شامل من فريقنا</p>
+                    <a href="index.html#contact" class="btn btn-light btn-lg me-3">ابدأ الآن مجاناً</a>
+                    <a href="index.html#pricing" class="btn btn-outline-light btn-lg">عرض الأسعار</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget">
+                        <h4>عن إدارتي</h4>
+                        <p>أنظمة إدارة ذكية وموثوقة تساعدك على تطوير عملك وزيادة كفاءته.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget">
+                        <h4>روابط سريعة</h4>
+                        <ul class="footer-links">
+                            <li><a href="index.html">الرئيسية</a></li>
+                            <li><a href="idarti-clinic.html">إدارتي العيادات</a></li>
+                            <li><a href="idarti-academy.html">إدارتي الأكاديمية</a></li>
+                            <li><a href="idarti-track.html">إدارتي المحاسبي</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4>الدعم</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">الأسئلة الشائعة</a></li>
+                            <li><a href="#">الدعم الفني</a></li>
+                            <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
+                            <li><a href="#">الشروط والأحكام</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h4>اتصل بنا</h4>
+                        <ul class="footer-links">
+                            <li><i class="fas fa-map-marker-alt ml-2"></i> القاهرة، مصر</li>
+                            <li><i class="fas fa-phone-alt ml-2"></i> 01105113056</li>
+                            <li><i class="fas fa-envelope ml-2"></i> info@idarti.online</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p> 2025 إدارتي. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/201105113056" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- GLightbox -->
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Initialize GLightbox
+        const lightbox = GLightbox({
+            touchNavigation: true,
+            loop: true
+        });
+    </script>
+</body>
+</html>
+

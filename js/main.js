@@ -125,28 +125,80 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Pricing Tabs Control - Only Clinic Available
+// Pricing Tabs Control
 document.addEventListener('DOMContentLoaded', function() {
-    const academyTab = document.getElementById('academy-tab');
     const accountingTab = document.getElementById('accounting-tab');
     const comingSoonModal = new bootstrap.Modal(document.getElementById('comingSoonModal'));
     const comingSoonMessage = document.getElementById('comingSoonMessage');
     
-    if (academyTab) {
-        academyTab.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            comingSoonMessage.textContent = 'نظام إدارتي أكاديمي سيكون متاحاً قريباً! نحن نعمل بجد لتوفيره لك.';
-            comingSoonModal.show();
-        });
-    }
-    
+    // Only accounting tab is disabled
     if (accountingTab) {
         accountingTab.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             comingSoonMessage.textContent = 'نظام إدارتي للمحاسبات سيكون متاحاً قريباً! نحن نعمل بجد لتوفيره لك.';
             comingSoonModal.show();
+        });
+    }
+    
+    // Contact Form - Send to WhatsApp
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value || 'لم يتم التحديد';
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Create WhatsApp message
+            const whatsappMessage = `*رسالة جديدة من موقع إدارتي*\n\n` +
+                `*الاسم:* ${name}\n` +
+                `*البريد الإلكتروني:* ${email}\n` +
+                `*رقم الهاتف:* ${phone}\n` +
+                `*الموضوع:* ${subject}\n\n` +
+                `*الرسالة:*\n${message}`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // WhatsApp number (Egypt format: 201105113056)
+            const whatsappNumber = '201105113056';
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> تم الإرسال';
+            submitBtn.classList.add('btn-success');
+            submitBtn.classList.remove('btn-primary');
+            
+            // Show alert
+            const successAlert = document.createElement('div');
+            successAlert.className = 'alert alert-success mt-3';
+            successAlert.role = 'alert';
+            successAlert.innerHTML = '<i class="fas fa-check-circle me-2"></i> تم فتح الواتساب! سيتم إرسال رسالتك الآن.';
+            contactForm.appendChild(successAlert);
+            
+            // Reset form after 3 seconds
+            setTimeout(function() {
+                contactForm.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('btn-success');
+                submitBtn.classList.add('btn-primary');
+                successAlert.remove();
+            }, 5000);
         });
     }
 });

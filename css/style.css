@@ -21,6 +21,15 @@ body {
     padding: 0;
 }
 
+/* Remove underline from all links */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 html {
     overflow-x: hidden;
 }
@@ -183,6 +192,51 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar .navbar-toggler:focus {
     box-shadow: none;
+}
+
+/* Dropdown Menu Styles */
+.navbar .dropdown-menu {
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 10px 0;
+    margin-top: 10px;
+    background: white;
+    min-width: 220px;
+}
+
+.navbar .dropdown-item {
+    padding: 12px 20px;
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .dropdown-item:hover {
+    background: linear-gradient(135deg, rgba(30, 136, 229, 0.1), rgba(48, 63, 159, 0.1));
+    color: var(--primary-color);
+    padding-right: 25px;
+}
+
+.navbar .dropdown-item i {
+    width: 20px;
+    text-align: center;
+}
+
+.navbar .dropdown-divider {
+    margin: 8px 0;
+    opacity: 0.2;
+}
+
+.navbar .dropdown-toggle::after {
+    margin-right: 5px;
+    transition: transform 0.3s ease;
+}
+
+.navbar .dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
 }
 
 /* ===== HERO SECTION ===== */

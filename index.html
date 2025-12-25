@@ -19,8 +19,8 @@
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="img/logo.png" alt="إدارتي" style="height: 50px;" loading="eager">
+            <a class="navbar-brand" href="#home">
+                <img src="img/main/logo.png" alt="إدارتي" style="height: 50px;" loading="eager">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
@@ -30,13 +30,21 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="#home">الرئيسية</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#products">الأنظمة</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="systemsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            الأنظمة
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="systemsDropdown">
+                            <li><a class="dropdown-item" href="idarti-clinic.html"><i class="fas fa-hospital me-2"></i> إدارتي العيادات</a></li>
+                            <li><a class="dropdown-item" href="idarti-academy.html"><i class="fas fa-graduation-cap me-2"></i> إدارتي الأكاديمية</a></li>
+                            <li><a class="dropdown-item" href="idarti-track.html"><i class="fas fa-calculator me-2"></i> إدارتي المحاسبي</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#products"><i class="fas fa-th me-2"></i> جميع الأنظمة</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="system-showcase.html">شرح النظام</a>
+                        <a class="nav-link" href="idarti-clinic.html">شرح النظام</a>
                     </li>
-                    
                     <li class="nav-item">
                         <a class="nav-link" href="#features">المميزات</a>
                     </li>
@@ -55,7 +63,7 @@
     </nav>
 
     <!-- ===== HERO SECTION ===== -->
-    <section id="home" class="hero">
+    <section id="home" class="hero" style="padding-top: 120px;">
         <div class="hero-particles"></div>
         <div class="container">
             <div class="row align-items-center">
@@ -63,22 +71,22 @@
                     <div class="hero-content">
                         <span class="hero-subtitle">أنظمة إدارة ذكية</span>
                         <h1>نطور <span class="text-gradient">أعمالك</span> بحلول برمجية متكاملة</h1>
-                        <p>اكتشف نظام إدارتي كلينك المتخصص في إدارة العيادات والمراكز الطبية. حلول مبتكرة تناسب احتياجاتك وتضمن لك النجاح.</p>
+                        <p>اكتشف أنظمة إدارتي المتكاملة لإدارة أعمالك بكفاءة واحترافية. حلول برمجية شاملة تناسب احتياجاتك وتضمن لك النجاح.</p>
                         <div class="hero-btns">
                             <a href="#contact" class="btn btn-light btn-lg cta-trial-btn">جرّب النسخة التجريبية مجاناً <i class="fas fa-rocket ms-2"></i></a>
                             <a href="#products" class="btn btn-outline-light btn-lg">استعرض الأنظمة</a>
                         </div>
                         <div class="hero-stats">
                             <div class="hero-stat-item">
-                                <h3><span class="counter" data-target="1500">0</span>+</h3>
-                                <p>عميل سعيد</p>
+                                <h3><span class="counter" data-target="50">0</span>+</h3>
+                                <p>عميل نشط</p>
                             </div>
                             <div class="hero-stat-item">
                                 <h3><span class="counter" data-target="3">0</span></h3>
                                 <p>أنظمة متكاملة</p>
                             </div>
                             <div class="hero-stat-item">
-                                <h3><span class="counter" data-target="99">0</span>%</h3>
+                                <h3><span class="counter" data-target="95">0</span>%</h3>
                                 <p>نسبة الرضا</p>
                             </div>
                         </div>
@@ -86,7 +94,7 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
                     <div class="hero-img">
-                        <img src="img/Artboard 120_1.png" alt="أنظمة إدارة ذكية" class="img-fluid" loading="eager">
+                        <img src="img/main/banner.png" alt="أنظمة إدارة ذكية" class="img-fluid" loading="eager">
                         <div class="hero-shape-1"></div>
                         <div class="hero-shape-2"></div>
                     </div>
@@ -108,9 +116,9 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="product-card">
                         <div class="product-badge bg-primary">الأكثر مبيعاً</div>
-                        <img src="img/manager-dashboard.png" class="card-img-top" alt="نظام إدارتي كلينك" loading="lazy">
+                        <img src="img/idarti_clinic/لوحة التحكم.jpeg" class="card-img-top" alt="نظام إدارتي كلينك" loading="lazy">
                         <div class="card-body">
-                            <h3 class="card-title">إدارتي كلينك</h3>
+                            <h3 class="card-title">إدارتي العيادات</h3>
                             <span class="badge bg-primary">متاح الآن</span>
                             <p class="card-text">نظام متكامل لإدارة العيادات بـ <strong>38+ ميزة</strong> تشمل المرضى، المواعيد، الصيدلية، التحاليل، الفواتير، التقارير، وأكثر!</p>
                             <ul class="product-features">
@@ -122,8 +130,8 @@
                                 <li><i class="fas fa-check-circle text-success"></i> بوابة المريض + تطبيق موبايل</li>
                             </ul>
                             <div class="product-actions">
-                                <a href="system-showcase.html" class="btn btn-primary">عرض التفاصيل</a>
-                                <a href="system-showcase.html" class="btn btn-outline-primary ms-2"><i class="fas fa-images"></i> شاهد الصور</a>
+                                <a href="idarti-clinic.html" class="btn btn-primary">عرض التفاصيل</a>
+                                <a href="idarti-clinic.html#gallery" class="btn btn-outline-primary ms-2"><i class="fas fa-images"></i> شاهد الصور</a>
                             </div>
                         </div>
                     </div>
@@ -132,22 +140,22 @@
                 <!-- نظام إدارتي أكاديمي -->
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="product-card">
-                        <div class="product-badge bg-success">متاح قريباً</div>
-                        <img src="img/comming_soon.jpg" class="card-img-top" alt="نظام إدارتي أكاديمي" loading="lazy">
+                        <div class="product-badge bg-success">الأكثر مبيعاً</div>
+                        <img src="img/idarti_academy/لوحة تحكم المدير.jpeg" class="card-img-top" alt="نظام إدارتي أكاديمي" loading="lazy">
                         <div class="card-body">
-                            <h3 class="card-title">إدارتي أكاديمي</h3>
-                            <span class="badge bg-warning">قريباً</span>
+                            <h3 class="card-title">إدارتي الأكاديمية</h3>
+                            <span class="badge bg-success">متاح الآن</span>
                             <p class="card-text">نظام شامل لإدارة المراكز التعليمية والأكاديميات بكفاءة واحترافية.</p>
                             <ul class="product-features">
-                                <li>إدارة الطلاب والمدربين</li>
-                                <li>جدولة الدورات والفصول</li>
-                                <li>إدارة الاختبارات والشهادات</li>
-                                <li>نظام حضور وانصراف متكامل</li>
-                                <li>تقارير الأداء والإحصائيات</li>
+                                <li><i class="fas fa-check-circle text-success"></i> إدارة الطلاب والمدربين</li>
+                                <li><i class="fas fa-check-circle text-success"></i> جدولة الدورات والفصول</li>
+                                <li><i class="fas fa-check-circle text-success"></i> إدارة الاختبارات والشهادات</li>
+                                <li><i class="fas fa-check-circle text-success"></i> نظام حضور وانصراف متكامل</li>
+                                <li><i class="fas fa-check-circle text-success"></i> تقارير الأداء والإحصائيات</li>
                             </ul>
                             <div class="product-actions">
-                                <a href="#" class="btn btn-primary">عرض التفاصيل</a>
-                                <a href="#" class="btn btn-outline-primary ms-2"><i class="fas fa-play-circle"></i> عرض توضيحي</a>
+                                <a href="idarti-academy.html" class="btn btn-primary">عرض التفاصيل</a>
+                                <a href="idarti-academy.html#gallery" class="btn btn-outline-primary ms-2"><i class="fas fa-images"></i> شاهد الصور</a>
                             </div>
                         </div>
                     </div>
@@ -156,21 +164,21 @@
                 <!-- نظام إدارتي للمحاسبات -->
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="product-card">
-                        <img src="img/comming_soon.jpg" class="card-img-top" alt="نظام إدارتي للمحاسبات" loading="lazy">
+                        <img src="img/idarti_track/لوحة تحكم السيستم المحاسبى.png" class="card-img-top" alt="نظام إدارتي للمحاسبات" loading="lazy">
                         <div class="card-body">
                             <h3 class="card-title">إدارتي للمحاسبات</h3>
-                            <span class="badge bg-warning">قريباً</span>
+                            <span class="badge bg-success">متاح الآن</span>
                             <p class="card-text">نظام محاسبي شامل لإدارة حساباتك وميزانياتك بدقة وسهولة.</p>
                             <ul class="product-features">
-                                <li>إدارة الحسابات والميزانيات</li>
-                                <li>تقارير مالية متنوعة</li>
-                                <li>إدارة الفواتير والمدفوعات</li>
-                                <li>تتبع الإيرادات والمصروفات</li>
-                                <li>متوافق مع الأنظمة الضريبية</li>
+                                <li><i class="fas fa-check-circle text-success"></i> إدارة الحسابات والميزانيات</li>
+                                <li><i class="fas fa-check-circle text-success"></i> تقارير مالية متنوعة</li>
+                                <li><i class="fas fa-check-circle text-success"></i> إدارة الفواتير والمدفوعات</li>
+                                <li><i class="fas fa-check-circle text-success"></i> تتبع الإيرادات والمصروفات</li>
+                                <li><i class="fas fa-check-circle text-success"></i> متوافق مع الأنظمة الضريبية</li>
                             </ul>
                             <div class="product-actions">
-                                <a href="#" class="btn btn-primary">عرض التفاصيل</a>
-                                <a href="#" class="btn btn-outline-primary ms-2"><i class="fas fa-play-circle"></i> عرض توضيحي</a>
+                                <a href="idarti-track.html" class="btn btn-primary">عرض التفاصيل</a>
+                                <a href="idarti-track.html#gallery" class="btn btn-outline-primary ms-2"><i class="fas fa-images"></i> شاهد الصور</a>
                             </div>
                         </div>
                     </div>
@@ -202,7 +210,7 @@
             <div class="row mb-5">
                 <div class="col-lg-8 col-md-10 mx-auto text-center" data-aos="fade-up">
                     <div class="features-image">
-                        <img src="img/قائمة الداكتره.png" alt="مميزات إدارتي" class="img-fluid rounded-3" loading="lazy" style="max-width: 80%; box-shadow: 0 15px 50px rgba(0,0,0,0.15);">
+                        <img src="img/idarti_clinic/قائمة الاطباء.jpeg" alt="مميزات إدارتي" class="img-fluid rounded-3" loading="lazy" style="max-width: 80%; box-shadow: 0 15px 50px rgba(0,0,0,0.15);">
                     </div>
                 </div>
             </div>
@@ -331,8 +339,8 @@
                                             <div class="stat-icon">
                                                 <i class="fas fa-users"></i>
                                             </div>
-                                            <h3 class="counter" data-target="1500">0</h3>
-                                            <p>عميل سعيد</p>
+                                            <h3 class="counter" data-target="50">0</h3>
+                                            <p>عميل نشط</p>
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -340,7 +348,7 @@
                                             <div class="stat-icon">
                                                 <i class="fas fa-hospital"></i>
                                             </div>
-                                            <h3 class="counter" data-target="500">0</h3>
+                                            <h3 class="counter" data-target="30">0</h3>
                                             <p>عيادة ومركز طبي</p>
                                         </div>
                                     </div>
@@ -358,7 +366,7 @@
                                             <div class="stat-icon">
                                                 <i class="fas fa-star"></i>
                                             </div>
-                                            <h3 class="counter" data-target="99">0</h3>
+                                            <h3 class="counter" data-target="95">0</h3>
                                             <p>نسبة الرضا %</p>
                                         </div>
                                     </div>
@@ -368,7 +376,7 @@
                             <!-- صورة النظام -->
                             <div class="col-lg-6 mb-4 mb-lg-0 order-lg-2 order-1">
                                 <div class="stats-image-wrapper">
-                                    <img src="img/manager-dashboard.png" alt="لوحة تحكم النظام" class="img-fluid rounded-3" loading="lazy">
+                                    <img src="img/idarti_clinic/لوحة التحكم.jpeg" alt="لوحة تحكم النظام" class="img-fluid rounded-3" loading="lazy">
                                     <div class="stats-badge">
                                         <i class="fas fa-chart-line"></i>
                                         <span>Dashboard مباشر</span>
@@ -379,7 +387,7 @@
                         
                         <div class="text-center mt-5">
                             <a href="#contact" class="btn btn-primary btn-lg">تواصل معنا الآن</a>
-                            <a href="system-showcase.html" class="btn btn-outline-primary btn-lg ms-2">شاهد المزيد</a>
+                            <a href="idarti-clinic.html" class="btn btn-outline-primary btn-lg ms-2">شاهد المزيد</a>
                         </div>
                     </div>
                 </div>
@@ -405,7 +413,7 @@
                                 <p>شاهد الفيديو التوضيحي</p>
                             </div>
                             <!-- يمكن استبداله بفيديو حقيقي -->
-                            <img src="img/manager-dashboard.png" alt="عرض توضيحي للنظام" class="img-fluid rounded-3" loading="lazy">
+                            <img src="img/idarti_clinic/لوحة التحكم.jpeg" alt="عرض توضيحي للنظام" class="img-fluid rounded-3" loading="lazy">
                         </div>
                         <div class="demo-badge">
                             <i class="fas fa-video"></i>
@@ -421,25 +429,25 @@
                         <div class="row">
                             <div class="col-6 mb-3">
                                 <div class="screenshot-item">
-                                    <img src="img/قائمة المرضى.png" alt="إدارة المرضى" class="img-fluid rounded" loading="lazy">
+                                    <img src="img/idarti_clinic/لوحة التحكم.jpeg" alt="إدارة المرضى" class="img-fluid rounded" loading="lazy">
                                     <p class="text-center mt-2"><i class="fas fa-user-injured text-primary"></i> إدارة شاملة للمرضى</p>
                                 </div>
                             </div>
                             <div class="col-6 mb-3">
                                 <div class="screenshot-item">
-                                    <img src="img/قائمة الكشوفات.png" alt="نظام المواعيد" class="img-fluid rounded" loading="lazy">
+                                    <img src="img/idarti_clinic/تفاصيل الكشف.jpeg" alt="نظام المواعيد" class="img-fluid rounded" loading="lazy">
                                     <p class="text-center mt-2"><i class="fas fa-calendar-check text-primary"></i> نظام مواعيد مرن</p>
                                 </div>
                             </div>
                             <div class="col-6 mb-3">
                                 <div class="screenshot-item">
-                                    <img src="img/تفاصيل المريض.png" alt="السجلات الطبية" class="img-fluid rounded" loading="lazy">
+                                    <img src="img/idarti_clinic/لوحة تحكم الصيدليه.jpeg" alt="السجلات الطبية" class="img-fluid rounded" loading="lazy">
                                     <p class="text-center mt-2"><i class="fas fa-file-medical text-primary"></i> سجلات طبية متكاملة</p>
                                 </div>
                             </div>
                             <div class="col-6 mb-3">
                                 <div class="screenshot-item">
-                                    <img src="img/التقارير (1).png" alt="التقارير" class="img-fluid rounded" loading="lazy">
+                                    <img src="img/idarti_clinic/تقارير الصيدليه والمخزن.jpeg" alt="التقارير" class="img-fluid rounded" loading="lazy">
                                     <p class="text-center mt-2"><i class="fas fa-chart-bar text-primary"></i> تقارير تفاعلية</p>
                                 </div>
                             </div>
@@ -467,7 +475,7 @@
                             </div>
                         </div>
                         <div class="text-center mt-4">
-                            <a href="system-showcase.html" class="btn btn-primary btn-lg me-2">شاهد الشرح الكامل</a>
+                            <a href="idarti-clinic.html" class="btn btn-primary btn-lg me-2">شاهد الشرح الكامل</a>
                             <a href="#contact" class="btn btn-outline-primary btn-lg">احجز عرضاً توضيحياً</a>
                         </div>
                     </div>
@@ -535,7 +543,7 @@
                         <button class="nav-link active" id="clinic-tab" data-bs-toggle="pill" data-bs-target="#clinic" type="button" role="tab" aria-controls="clinic" aria-selected="true">إدارتي كلينك</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link disabled-tab" id="academy-tab" type="button">إدارتي أكاديمي</button>
+                        <button class="nav-link" id="academy-tab" data-bs-toggle="pill" data-bs-target="#academy" type="button" role="tab" aria-controls="academy" aria-selected="false">إدارتي أكاديمي</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link disabled-tab" id="accounting-tab" type="button">إدارتي للمحاسبات</button>
@@ -997,8 +1005,8 @@
                     <div class="testimonial-cta">
                         <div class="row align-items-center">
                             <div class="col-lg-8">
-                                <h3>انضم إلى آلاف العملاء الناجحين</h3>
-                                <p>اكتشف كيف يمكن لنظام إدارتي كلينك أن يطور عيادتك ويزيد كفاءة الإدارة</p>
+                                <h3>انضم إلى عملائنا الناجحين</h3>
+                                <p>اكتشف كيف يمكن لأنظمة إدارتي أن تطور عملك ويزيد كفاءة الإدارة</p>
                             </div>
                             <div class="col-lg-4 text-lg-end">
                                 <a href="#contact" class="btn btn-primary btn-lg">تواصل معنا الآن</a>
@@ -1015,7 +1023,7 @@
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>شركاؤنا في <span class="text-primary">النجاح</span></h2>
-                <p>عيادات ومراكز طبية تثق في نظام إدارتي كلينك</p>
+                <p>عيادات ومراكز طبية وأكاديميات تثق في أنظمة إدارتي</p>
             </div>
             
             <div class="partners-grid" data-aos="fade-up" data-aos-delay="100">
@@ -1058,7 +1066,7 @@
             </div>
             
             <div class="text-center mt-5" data-aos="fade-up">
-                <p class="partners-note">وأكثر من <strong>500+ عيادة ومركز طبي</strong> يثقون بنا</p>
+                <p class="partners-note">وأكثر من <strong>30+ عيادة ومركز طبي</strong> يثقون بنا</p>
             </div>
             
             <!-- بانر التدريب والدعم -->
@@ -1117,16 +1125,16 @@
             </div>
             <div class="payment-methods-container" data-aos="fade-up" data-aos-delay="100">
                 <div class="payment-method-item">
-                    <img src="img/fawery.png" alt="Fawry" loading="lazy">
+                    <img src="img/main/fawery.png" alt="Fawry" loading="lazy">
                 </div>
                 <div class="payment-method-item">
-                    <img src="img/فودافون كاش.webp" alt="Vodafone Cash" loading="lazy">
+                    <img src="img/main/فودافون كاش.webp" alt="Vodafone Cash" loading="lazy">
                 </div>
                 <div class="payment-method-item">
-                    <img src="img/اتصالات كاش.png" alt="Etisalat Cash" loading="lazy">
+                    <img src="img/main/اتصالات كاش.png" alt="Etisalat Cash" loading="lazy">
                 </div>
                 <div class="payment-method-item">
-                    <img src="img/انستا باى.jpeg" alt="InstaPay" loading="lazy">
+                    <img src="img/main/انستا باى.jpeg" alt="InstaPay" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1150,7 +1158,7 @@
                             </div>
                             <div class="contact-info-text">
                                 <h5>العنوان</h5>
-                                <p>شارع الملك فهد، الرياض، المملكة العربية السعودية</p>
+                                <p>القاهرة، مصر</p>
                             </div>
                         </div>
                         
@@ -1160,8 +1168,7 @@
                             </div>
                             <div class="contact-info-text">
                                 <h5>اتصل بنا</h5>
-                                <p>+966 12 345 6789</p>
-                                <p>+966 98 765 4321</p>
+                                <p>01105113056</p>
                             </div>
                         </div>
                         
@@ -1171,8 +1178,7 @@
                             </div>
                             <div class="contact-info-text">
                                 <h5>البريد الإلكتروني</h5>
-                                <p>info@idarti.com</p>
-                                <p>support@idarti.com</p>
+                                <p>info@idarti.online</p>
                             </div>
                         </div>
                         
@@ -1252,7 +1258,7 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="privacy" required>
                                 <label class="form-check-label" for="privacy">
-                                    أوافق على <a href="#">سياسة الخصوصية</a> وشروط الاستخدام
+                                    أوافق على <a href="privacy-policy.html" target="_blank">سياسة الخصوصية</a> وشروط الاستخدام
                                 </label>
                             </div>
                             
@@ -1266,7 +1272,7 @@
             <div class="row mt-5">
                 <div class="col-12" data-aos="fade-up">
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.6284823429604!2d46.67518231500953!3d24.713454184128826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2sKing%20Fahd%20Rd%2C%20Riyadh%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1623144447542!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110502.60389588467!2d31.1884235!3d30.0444196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60c21f87d%3A0x2e452c30e5a01a7b!2sCairo%2C%20Egypt!5e0!3m2!1sen!2sus!4v1623144447542!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
@@ -1328,7 +1334,7 @@
                         <ul class="footer-links">
                             <li><a href="#">الأسئلة الشائعة</a></li>
                             <li><a href="#">الدعم الفني</a></li>
-                            <li><a href="#">سياسة الخصوصية</a></li>
+                            <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
                             <li><a href="#">الشروط والأحكام</a></li>
                             <li><a href="#">سياسة الاسترجاع</a></li>
                         </ul>
@@ -1339,9 +1345,9 @@
                     <div class="footer-widget">
                         <h4>اتصل بنا</h4>
                         <ul class="footer-links">
-                            <li><i class="fas fa-map-marker-alt ml-2"></i> الرياض، المملكة العربية السعودية</li>
-                            <li><i class="fas fa-phone-alt ml-2"></i> +966 55 000 0000</li>
-                            <li><i class="fas fa-envelope ml-2"></i> info@idarti.com</li>
+                            <li><i class="fas fa-map-marker-alt ml-2"></i> القاهرة، مصر</li>
+                            <li><i class="fas fa-phone-alt ml-2"></i> 01105113056</li>
+                            <li><i class="fas fa-envelope ml-2"></i> info@idarti.online</li>
                         </ul>
                     </div>
                 </div>
@@ -1362,7 +1368,7 @@
     <!-- Custom JavaScript -->
     <script src="js/main.js"></script>
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/966550000000" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/201105113056" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 </body>
